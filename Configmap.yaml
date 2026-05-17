@@ -3,6 +3,11 @@ kind: ConfigMap
 metadata:
   name: demo-app-config
   namespace: demo-app
+  labels:
+    app: demo-app
+    env: preprod
+    team: pokerstars-ita
+    version: "v1.1"
 data:
   APP_ENV: "preprod"
   APP_PORT: "8080"
