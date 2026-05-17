@@ -5,6 +5,7 @@ metadata:
   namespace: demo-app
   labels:
     app: demo-postgres
+    version: "v1.2"
 spec:
   serviceName: demo-postgres
   replicas: 1
@@ -15,10 +16,11 @@ spec:
     metadata:
       labels:
         app: demo-postgres
+        version: "v1.2"
     spec:
       containers:
         - name: postgres
-          image: postgres:15-alpine
+          image: postgres:16-alpine
           ports:
             - containerPort: 5432
           env:
@@ -34,11 +36,11 @@ spec:
                   key: DB_PASSWORD
           resources:
             requests:
-              memory: "128Mi"
-              cpu: "100m"
-            limits:
               memory: "256Mi"
               cpu: "200m"
+            limits:
+              memory: "512Mi"
+              cpu: "400m"
           volumeMounts:
             - name: postgres-data
               mountPath: /var/lib/postgresql/data
@@ -49,7 +51,7 @@ spec:
         accessModes: ["ReadWriteOnce"]
         resources:
           requests:
-            storage: 1Gi
+            storage: 2Gi
 ---
 apiVersion: v1
 kind: Service

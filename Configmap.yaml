@@ -6,14 +6,15 @@ metadata:
   labels:
     app: demo-app
     env: preprod
-    team: pokerstars-ita
-    version: "v1.1"
+    version: "v1.2"
 data:
   APP_ENV: "preprod"
   APP_PORT: "8080"
   APP_NAME: "demo-pokerstars"
-  LOG_LEVEL: "debug"
+  LOG_LEVEL: "info"
   DB_HOST: "demo-postgres"
   DB_PORT: "5432"
   FEATURE_FLAG_NEW_UI: "true"
   REGION: "ita"
+  MAX_CONNECTIONS: "100"
+  TIMEOUT: "30s"
